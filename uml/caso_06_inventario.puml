@@ -1,0 +1,27 @@
+@startuml .
+title Caso de Estudio 03 - Inventario de Tienda Escolar
+
+class Producto {
+  - __codigo: str
+  - __nombre: str
+  - __precio: float
+  - __stock: int
+  + codigo: str
+  + nombre: str
+  + precio: float
+  + stock: int
+  + hay_stock(cantidad: int): bool
+  + modificar_stock(cantidad: int): bool
+}
+
+class Inventario {
+  - __productos: list[Producto]
+  + productos: list[Producto]
+  + buscar_producto(codigo: str): Producto | None
+  + agregar_producto(producto: Producto): bool
+  + actualizar_stock(codigo: str, cantidad: int): bool
+  + consultar_stock(codigo: str): int | None
+}
+
+Inventario "1" *-- "0..*" Producto : contiene
+@enduml
